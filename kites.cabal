@@ -1,0 +1,70 @@
+cabal-version: 2.2
+
+name: kites
+version: 1.0
+build-type: Simple
+
+common options
+  default-language: Haskell2010
+
+  build-depends:
+      base
+    , summer
+
+  ghc-options:
+    -Wall
+
+  default-extensions:
+    BlockArguments
+    DataKinds
+    DerivingStrategies
+    DuplicateRecordFields
+    ImportQualifiedPost
+    LambdaCase
+    OverloadedLabels
+    OverloadedStrings
+
+    -- GHC2021
+    BangPatterns
+    BinaryLiterals
+    ConstrainedClassMethods
+    ConstraintKinds
+    DeriveDataTypeable
+    DeriveFoldable
+    DeriveFunctor
+    DeriveGeneric
+    DeriveLift
+    DeriveTraversable
+    EmptyCase
+    EmptyDataDeriving
+    ExistentialQuantification
+    ExplicitForAll
+    FlexibleContexts
+    FlexibleInstances
+    GADTSyntax
+    GeneralisedNewtypeDeriving
+    HexFloatLiterals
+    ImportQualifiedPost
+    InstanceSigs
+    KindSignatures
+    MultiParamTypeClasses
+    NamedFieldPuns
+    NamedWildCards
+    NumericUnderscores
+    PolyKinds
+    PostfixOperators
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    StandaloneKindSignatures
+    TupleSections
+    TypeApplications
+    TypeOperators
+    TypeSynonymInstances
+
+library
+  import: options
+  exposed-modules:
+      Kites
+  hs-source-dirs:
+      library
