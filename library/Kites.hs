@@ -15,7 +15,7 @@ x1 :: Sum '[LetterA, LetterB, LetterC, LetterD, LetterE]
 x1 = Inj LetterA
 
 x2 :: Sum '[LetterA, LetterE, LetterB, LetterC, LetterD]
-x2 = weaken x1 -- preferred "reorder x1" would be nice to only allow reordering so I know I didn't actually weaken
+x2 = weaken x1 -- preferred "reorder x1" would be nice to only allow reordering so I know I didn't accidentally weaken
 
 x3 :: Sum '[Sum '[LetterA, LetterE], Sum '[LetterB, LetterC, LetterD]]
 x3 = error "assocOneLevel x2" -- I would be ok if this could be done one "level" at a time, sort of like "unconcat" or something
@@ -37,6 +37,9 @@ type IsPossessive = Const Bool "Possessive"
 u1 :: Prod '[ [Letter], IsContracted ]
 u1 = undefined
 
+u1' :: Prod '[ IsContracted, [Letter] ]
+u1' = strengthen u1 -- could we just have "reorder u1" so I don't accidentally 'strenghten' the type? (which would lose information)
+
 u2 :: Prod '[ (), [Letter], (), IsContracted ]
 u2 = error "addUnits u1" -- we could add units any old place (useful for applying a lens to that part)
 
@@ -57,7 +60,7 @@ processApostrophe = undefined -- some function
 
 myData2 ::
   Prod
-    '[ [ Sum '[Letter] ] -- representing a word as a list of letters or an apostrophe
+    '[ [ Sum '[Letter] ] -- representing a word as a list of letters
     ,  IsContracted
     ,  IsPossessive
     ]
